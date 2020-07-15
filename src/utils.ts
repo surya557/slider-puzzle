@@ -2,11 +2,10 @@ import { Box } from "./types";
 
 export function shuffleGrids (grids: number[], empty: number): number[] {
     // Extract empty item and concat it at the end.
-    if (!puzzleCompleted(grids)) {
-        const removeEmptyGridFromArray: number[] = grids.filter(g => g !== empty);
-        const shuffled = shuffle(removeEmptyGridFromArray);
-        grids = [...shuffled, empty];
-    }
+    const removeEmptyGridFromArray: number[] = grids.filter(g => g !== empty);
+    const shuffled = shuffle(removeEmptyGridFromArray);
+    grids = [...shuffled, empty];
+
     return grids;
 }
 
@@ -44,10 +43,10 @@ export function exchange (grids: number[], idx: number, emptyIndex: number): num
 }
 
 export function puzzleCompleted(grids: number[]) {
-    for (let i = 1; i < grids.length; i++) {
-        if (grids[i] !== i) {
-            return false;
-        }
-    }
-    return true;
+    /*
+    To finish the game ALL the numbers must be in the order starting from 1 and ending with 15.
+    If any of the sequence doesn't match, return false else return true.
+    */
+
+    return grids.every((grid, index) => grid === index + 1);
 }

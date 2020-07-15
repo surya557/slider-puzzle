@@ -33,9 +33,10 @@ const SliderPuzzle = (props: PuzzleProps) => {
     };
     useEffect(() => {
         if (puzzleCompleted(grids)) {
-            alert('Successfully completed game')
+            alert('Successfully completed game');
         }
     });
+
     return (
         <>
             <Styled.ShuffleBtn onClick={randomShuffle}>
